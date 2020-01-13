@@ -1,6 +1,6 @@
 Web Scraping Challenge!
 
-What a fun assignment this was. I could bare stop working on it and kept (read keep) on seeing things that could look better. 
+What a fun assignment this was. I could barely stop working on it and kept (read keep) on seeing things that could look better. 
 
 The index.html file only work actively, if it is started from Flask (by running app.py from a python shell). When clicking "Scrape new data", 5 websites will be scraped.
 The returned information is stored in  a mongoDB database and in turn read by the index.html file to reflect the most current information.
