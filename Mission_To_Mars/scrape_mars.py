@@ -55,7 +55,7 @@ def scrape():
 
     # Retrieve page with the requests module
     response = requests.get(url)
-    soup = bs(response.text, 'lxml')
+    soup = bs(response.text, 'html.parser')
 
     space_image = soup.article.a['data-fancybox-href']
     print("Largest Image found: " + space_image)
@@ -102,8 +102,6 @@ def scrape():
     facts = facts.set_index('Mars Profile:')
     print("Mars Facts:")
     print(facts)
-
-    facts.to_html("mars_facts.html")
 
     #######################################################################
     ### Mars Hemispheres ###
