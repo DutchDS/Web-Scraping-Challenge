@@ -23,9 +23,6 @@ def scrape():
     ### NASA Mars News ###
     #######################################################################
 
-    # executable_path = {'executable_path': 'chromedriver.exe'}
-    # browser = Browser('chrome', **executable_path, headless=True)
-
     url_mars = 'https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest'
     browser.visit(url_mars)
 
@@ -35,9 +32,9 @@ def scrape():
     # Iterate through each article found
     # Tried this as well: response = requests.get(url_mars)
     # But unles JavaScript is turned of for this website, 'press release' articles show up first, not the latest one (discussed with John and Bobby)
-    articles = soup.find_all('div', class_='list_text')
 
     try:
+        news_body = "Temporarily Not available. Please scrape again!"
         news_title = soup.find('div', class_='content_title').text
         news_body = soup.find('div', class_='article_teaser_body').text
 
@@ -78,8 +75,6 @@ def scrape():
     ### Mars Weather ###
     #######################################################################
 
-    # executable_path = {'executable_path': 'chromedriver.exe'}
-    # browser = Browser('chrome', **executable_path, headless=True)# Mars Weather
     browser = init_browser()
 
     # URL of page to be scraped
@@ -87,8 +82,11 @@ def scrape():
     browser.visit(url)
     html = browser.html
     soup = bs(html, 'html.parser')
-
-    mars_weather = soup.find('p', class_="TweetTextSize TweetTextSize--normal js-tweet-text tweet-text").text
+    try:
+        mars_weather = soup.find('p', class_="TweetTextSize TweetTextSize--normal js-tweet-text tweet-text").text
+        mars_weather = mars_weather.split("https")[0]
+    except:
+        mars_weather = "Temporarily not available. Please scrape again!"
     print("mars_weather: " + mars_weather)
 
     #######################################################################
@@ -107,8 +105,6 @@ def scrape():
     ### Mars Hemispheres ###
     #######################################################################
 
-    # executable_path = {'executable_path': 'chromedriver.exe'}
-    # browser = Browser('chrome', **executable_path, headless=True)
     browser = init_browser()
 
     url = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
