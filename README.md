@@ -1,4 +1,5 @@
-Web Scraping Challenge!
+# Week 13 Web Scraping Challenge!
+By A. Rijpkema on 1/22/2020
 
 What a fun assignment this was. I could barely stop working on it and kept (read keep) on seeing things that could look better. For the homework assignment, please use the Mission_To_Mars folder (and not the Mission_To_Mars_II_HEROKU folder!!)
 
